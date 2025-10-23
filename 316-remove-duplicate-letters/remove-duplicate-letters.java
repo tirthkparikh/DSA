@@ -1,11 +1,11 @@
 class Solution {
     public String removeDuplicateLetters(String sr) {
-        int[] res = new int[26]; 
+        int[] rest = new int[26]; 
         boolean[] visited = new boolean[26]; 
         char[] ch = sr.toCharArray();
 
         for (char c : ch) {
-            res[c - 'a']++;
+            rest[c - 'a']++;
         }
 
         Stack<Character> st = new Stack<>(); 
@@ -13,11 +13,11 @@ class Solution {
 
         for (char s : ch) { 
             index = s - 'a';
-            res[index]--;   
+            rest[index]--;   
             if (visited[index]) 
                 continue;
 
-            while (!st.isEmpty() && s < st.peek() && res[st.peek() - 'a'] != 0) { 
+            while (!st.isEmpty() && s < st.peek() && rest[st.peek() - 'a'] != 0) { 
                 visited[st.pop() - 'a'] = false;
             }
 
